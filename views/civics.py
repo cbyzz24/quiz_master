@@ -1,7 +1,7 @@
 import flet as ft
 from flet_route import Params,Basket
 
-class NextView:
+class CivicsView:
     def __init__(self):
         ...
 
@@ -10,7 +10,7 @@ class NextView:
         print(basket)
 
         return ft.View(
-            "/next_view/:my_id",
+            "/civics/:my_id",
             controls=[
                 # ft.Text("This Is Next View"),
                 # ft.ElevatedButton("Go Index View", on_click=lambda _: page.go("/")),
@@ -23,16 +23,13 @@ class NextView:
                         controls=[
                             ft.Text("Civics", color="white", size=25),
                             ft.Container(
-                                content=ft.Dropdown(
-                                        label="Choose Subject",
-                                        width=200,
-                                        autofocus="True",
-                                        dense="True",
-                                        options=[
-                                            ft.dropdown.Option("home"),
-                                            ft.dropdown.Option("history"),
-                                        ],
-                                    ),
+                                ft.PopupMenuButton(
+                                items=[
+                                    ft.PopupMenuItem(text="Home", on_click=lambda _: page.go("/")),
+                                    ft.PopupMenuItem(text="History", on_click=lambda _: page.go("/history/11")),
+                                ]
+                            )
+                               
                             ),
                             
                             ft.Container(
